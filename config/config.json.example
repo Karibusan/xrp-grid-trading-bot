@@ -1,0 +1,8 @@
+{
+  "trading_pair": "XRPGBP",
+  "grid_range_percentage": 3.5,
+  "grid_levels": 14,
+  "total_allocation": 100.0,
+  "price_check_interval_minutes": 5,
+  "order_timeout_hours": 48
+}
