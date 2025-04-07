@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  xrp_trading_bot:
+    image: python:3.9
+    container_name: xrp_trading_bot
+    restart: unless-stopped
+    volumes:
+      - ./src:/app
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./backups:/app/backups
+    working_dir: /app
+    command: >
+      bash -c "pip install -r /app/config/requirements.txt &&
+               python enhanced_trading_system.py --config /app/config/config.json"
+    environment:
+      - TZ=UTC
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
