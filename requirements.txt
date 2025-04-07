@@ -1,0 +1,9 @@
+krakenex==2.1.0
+pykrakenapi==0.3.1
+numpy==1.24.3
+pandas==2.0.1
+scikit-learn==1.2.2
+matplotlib==3.7.1
+requests==2.30.0
+python-telegram-bot==13.13
+schedule==1.2.0
