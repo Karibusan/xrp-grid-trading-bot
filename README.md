@@ -12,6 +12,8 @@ An income-focused XRP grid trading bot with Docker deployment for Synology NAS.
 - **Telegram Notifications**: Real-time updates on trading activities
 - **Automatic Backups**: Daily backups and weekly log rotation
 - **Income-Focused Strategy**: Designed to generate income from existing XRP holdings
+- **Stop-Loss Protection**: Configurable protection against market downturns
+- **Profit Reinvestment**: Automatic reinvestment of profits for compound growth
 
 ## Prerequisites
 
@@ -41,6 +43,7 @@ docker-compose up -d
 - [Setup Guide](docs/setup.md): Detailed installation instructions
 - [Configuration Guide](docs/configuration.md): Explanation of all parameters
 - [Architecture](docs/architecture.md): How the grid trading strategy works
+- [Advanced Configuration](docs/advanced_configuration.md): New v1.2.0 features
 
 ## Grid Trading Strategy
 
@@ -51,6 +54,8 @@ This bot implements a grid trading strategy optimized for income generation:
 3. Uses dynamic order sizing for more efficient capital allocation
 4. Adapts grid parameters based on market trends
 5. Monitors and maintains the grid, recreating it when necessary
+6. Implements stop-loss protection for capital preservation
+7. Reinvests profits for compound growth (optional)
 
 The strategy is specifically designed to work with existing XRP holdings without requiring additional funds.
 
@@ -61,12 +66,24 @@ Example configuration:
 ```json
 {
   "trading_pair": "XRPGBP",
-  "grid_range_percentage": 3.5,
-  "grid_levels": 14,
-  "total_allocation": 100.0,
-  "price_check_interval_minutes": 5,
-  "order_timeout_hours": 48
+  "grid_range_percentage": 4.0,
+  "grid_levels": 16,
+  "total_allocation": 200.0,
+  "price_check_interval_minutes": 3,
+  "order_timeout_hours": 24,
+  "trend_check_interval": 2,
+  "dynamic_sizing": true,
+  "stop_loss_percentage": 12.0,
+  "profit_reinvestment": true
 }
+```
+
+## Performance Monitoring
+
+Generate detailed performance reports with:
+
+```bash
+python xrp_trading_bot.py --generate_report
 ```
 
 ## Disclaimer
