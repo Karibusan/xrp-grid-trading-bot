@@ -1,0 +1,40 @@
+{
+    "error_log_path": "data/error_log.json",
+    "max_log_size": 1000,
+    "reraise_exceptions": false,
+    "recovery_cooldown_minutes": {
+        "api_timeout": 5,
+        "network_error": 10,
+        "data_processing_error": 15,
+        "kraken_api_error": 5,
+        "order_placement_error": 10,
+        "configuration_error": 30
+    },
+    "notification_settings": {
+        "severity": {
+            "critical": true,
+            "high": true,
+            "medium": true,
+            "low": false,
+            "info": false
+        },
+        "error_types": {
+            "api_timeout": true,
+            "network_error": true,
+            "data_processing_error": true,
+            "kraken_api_error": true,
+            "order_placement_error": true,
+            "configuration_error": true,
+            "module_initialization_error": true
+        },
+        "max_notifications_per_hour": {
+            "api_timeout": 3,
+            "network_error": 3,
+            "data_processing_error": 5,
+            "kraken_api_error": 5,
+            "order_placement_error": 5,
+            "configuration_error": 2,
+            "module_initialization_error": 2
+        }
+    }
+}
