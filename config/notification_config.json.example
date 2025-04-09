@@ -1,0 +1,56 @@
+{
+    "pushover": {
+        "enabled": true,
+        "user_key": "YOUR_USER_KEY_HERE",
+        "app_token": "YOUR_APP_TOKEN_HERE",
+        "device": "",
+        "sound": "pushover",
+        "priority": 0
+    },
+    "notification_levels": {
+        "trade": true,
+        "daily_report": true,
+        "efficiency": true,
+        "error": true,
+        "debug": false
+    },
+    "level_settings": {
+        "trade": {
+            "priority": 0,
+            "sound": "cashregister"
+        },
+        "daily_report": {
+            "priority": -1,
+            "sound": "classical"
+        },
+        "efficiency": {
+            "priority": -1,
+            "sound": "mechanical"
+        },
+        "error": {
+            "priority": 1,
+            "sound": "siren"
+        },
+        "debug": {
+            "priority": -2,
+            "sound": "none"
+        }
+    },
+    "throttling": {
+        "enabled": true,
+        "max_notifications_per_hour": {
+            "trade": 20,
+            "daily_report": 2,
+            "efficiency": 4,
+            "error": 10,
+            "debug": 5
+        },
+        "min_time_between_notifications_seconds": {
+            "trade": 30,
+            "daily_report": 3600,
+            "efficiency": 900,
+            "error": 60,
+            "debug": 300
+        }
+    }
+}
