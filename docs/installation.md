@@ -99,7 +99,10 @@ Modifiez les fichiers de configuration selon vos besoins, en particulier :
 Créez les répertoires pour les données et les journaux :
 
 ```bash
-mkdir -p data logs
+mkdir -p /volume1/docker/xrp-grid-trading-bot/backups
+mkdir -p /volume1/docker/xrp-grid-trading-bot/config
+mkdir -p /volume1/docker/xrp-grid-trading-bot/data
+mkdir -p /volume1/docker/xrp-grid-trading-bot/logs
 ```
 
 ### 4. Construction et lancement du conteneur Docker
@@ -159,7 +162,10 @@ nano config/notification_config.json
 Créez les répertoires pour les données et les journaux :
 
 ```bash
-mkdir -p data logs
+mkdir -p /volume1/docker/xrp-grid-trading-bot/backups
+mkdir -p /volume1/docker/xrp-grid-trading-bot/config
+mkdir -p /volume1/docker/xrp-grid-trading-bot/data
+mkdir -p /volume1/docker/xrp-grid-trading-bot/logs
 ```
 
 ### 5. Lancement avec Docker Compose
