@@ -1,0 +1,38 @@
+{
+    "trading_pair": "XRPGBP",
+    "grid_range_percentage": 4.0,
+    "grid_levels": 16,
+    "total_allocation": 100.0,
+    "price_check_interval_minutes": 5,
+    "order_timeout_hours": 24,
+    "trend_check_interval": 6,
+    "dynamic_sizing": true,
+    "stop_loss_percentage": 12.0,
+    "profit_reinvestment": true,
+    "api_key": "",
+    "api_secret": "",
+    "data_dir": "data",
+    "log_file": "data/trading_log.txt",
+    "modules": {
+        "signal_collapse": {
+            "enabled": true,
+            "config_file": "data/signal_collapse_config.json"
+        },
+        "capital_migration": {
+            "enabled": true,
+            "config_file": "data/capital_migration_config.json"
+        },
+        "strategic_bifurcation": {
+            "enabled": true,
+            "config_file": "data/strategic_bifurcation_config.json"
+        },
+        "technological_convergence": {
+            "enabled": true,
+            "config_file": "data/technological_convergence_config.json"
+        },
+        "survivability": {
+            "enabled": true,
+            "config_file": "data/survivability_config.json"
+        }
+    }
+}

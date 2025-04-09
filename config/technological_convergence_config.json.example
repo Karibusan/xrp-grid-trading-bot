@@ -1,0 +1,12 @@
+{
+    "enabled": true,
+    "trading_pair": "XRPGBP",
+    "check_interval_hours": 6,
+    "technical_analysis_weight": 0.5,
+    "sentiment_analysis_weight": 0.2,
+    "ml_prediction_weight": 0.3,
+    "data_sources": ["exchange", "technical", "sentiment", "ml"],
+    "prediction_horizon_hours": 24,
+    "log_file": "data/technological_convergence_log.txt",
+    "data_file": "data/technological_convergence_data.json"
+}
