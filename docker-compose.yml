@@ -1,23 +1,20 @@
 version: '3'
-
 services:
   xrp_trading_bot:
-    image: python:3.9
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: xrp_trading_bot
     restart: unless-stopped
     volumes:
-      - ./src:/app
       - ./config:/app/config
       - ./data:/app/data
+      - ./logs:/app/logs
       - ./backups:/app/backups
-    working_dir: /app
-    command: >
-      bash -c "pip install -r /app/config/requirements.txt &&
-               python enhanced_trading_system.py --config /app/config/config.json"
     environment:
-      - TZ=UTC
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      - TZ=Europe/Paris
+      # Uncomment and set these if you prefer environment variables over config files
+      # - XRP_BOT_API_KEY=your_api_key
+      # - XRP_BOT_API_SECRET=your_api_secret
+      # - XRP_BOT_PUSHOVER_USER_KEY=your_pushover_user_key
+      # - XRP_BOT_PUSHOVER_APP_TOKEN=your_pushover_app_token
