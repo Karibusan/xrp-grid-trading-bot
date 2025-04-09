@@ -1,0 +1,20 @@
+version: '3'
+services:
+  xrp_trading_bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xrp_trading_bot
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./backups:/app/backups
+    environment:
+      - TZ=Europe/Paris
+      # Uncomment and set these if you prefer environment variables over config files
+      # - XRP_BOT_API_KEY=your_api_key
+      # - XRP_BOT_API_SECRET=your_api_secret
+      # - XRP_BOT_PUSHOVER_USER_KEY=your_pushover_user_key
+      # - XRP_BOT_PUSHOVER_APP_TOKEN=your_pushover_app_token

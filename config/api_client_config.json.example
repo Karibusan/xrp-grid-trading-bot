@@ -1,0 +1,27 @@
+{
+    "rate_limits": {
+        "max_requests_per_second": 1.0,
+        "max_requests_per_minute": 15
+    },
+    "cache": {
+        "max_size": 100,
+        "default_ttl_seconds": 60,
+        "ttl_overrides": {
+            "Time": 60,
+            "Assets": 3600,
+            "AssetPairs": 3600,
+            "Ticker": 15,
+            "Depth": 5,
+            "Trades": 30,
+            "Spread": 5,
+            "OHLC": 60
+        }
+    },
+    "timeout_seconds": 30,
+    "retry": {
+        "max_retries": 3,
+        "retry_delay_seconds": 2,
+        "retry_backoff_factor": 2,
+        "retry_status_codes": [429, 500, 502, 503, 504]
+    }
+}
