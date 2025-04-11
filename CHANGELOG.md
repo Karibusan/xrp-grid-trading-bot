@@ -1,58 +1,51 @@
 # 📜 Changelog
 
+## [4.3.0] — 2025-04-11
+
+### 💌 Daily Report by Email (NEW)
+
+- Added `scripts/email_report.py` to generate and send a daily trading summary
+- Report includes trades, session info, module usage, error count, basic suggestions
+- SMTP support via `.env` — fully configurable
+
+### 🧠 Improved AI Integration
+
+- Updated `README_AI.md` with instructions to activate/deactivate AI features
+- `.env.example` now includes full LLM configuration block
+- AI behavior is now fully toggleable and documented
+
+### 📚 Documentation & Dev Experience
+
+- New `docs/CONFIG_GUIDE.md`: explains all `.env` and `config.json` parameters
+- Added `config/config.json.example` (now valid JSON without comments)
+- New `scripts/README.md` explains the purpose of each utility script
+- New section “🧪 Experimental Config Files” in `CONFIG_GUIDE.md` for future modules
+- `.env.example` made more readable with clear headers and emoji sections
+
+### 🛠 Dev-Ready & Community-Friendly
+
+- Consistent naming across all config files
+- Scripts folder validated and commented
+- Project now easier to contribute to (dev onboarding, future PRs)
+
+> 🧠 This version prepares the ground for v5.0: full AI integration, multi-agent logic, and config introspection.
+
 ## [4.2.0] — 2025-04-11
 
-### 🧠 Log Intelligence & AI Preparation
+### 🔧 System Consolidation
 
-- Added `log_summarizer.py` to auto-generate daily JSON summaries of trading logs
-- Created `PROMPT_GUIDE.md` to define acceptable AI prompt types
-- Introduced `log_formatter.py` for structured, JSON-based logging
-- Added `validate_env.py` to check required environment variables on startup
-- Established `/logs/summary/` for AI-ready memory architecture
+- Unified configuration format (.env and config.json)
+- Cleaned up unused imports and legacy AI references
+- Added fallback behavior for missing config values
+- Improved logging format for module outputs
 
-> This version lays the foundation for autonomous, intelligent bot behavior in v5.0.  
-> Structured logs = memory. Prompts = communication. AI = augmentation.
+### 📁 File & Structure Cleanup
 
----
+- Renamed ambiguous variables and folders
+- Added clear module boundaries in strategy and ai layers
+- Cleaned legacy logs and commented unused configs
 
-## [4.1.0] — 2025-04-11
+### 🧪 Dev Mode Compatibility
 
-### 🚧 Consolidation & Core Reinforcement
-
-- Added `requirements.txt` with minimal clean dependencies
-- Added `.gitignore` to exclude logs, compiled files, env
-- Added `setup.py` for optional future packaging
-
-### 🧪 Testing & CI
-
-- Introduced `tests/` directory with first unit test (`config_loader`)
-- Added GitHub Actions (`ci.yml`) to run tests automatically on push/PR
-- Modularized testing structure for future extensions
-
-### 📚 Documentation Expansion
-
-- `README.md` updated with legal disclaimer and clear doc links
-- `README_AI.md` now includes a dedicated AI usage disclaimer
-- Added `CONTRIBUTING.md` for external collaborators
-- Added `SECURITY.md` for vulnerability reporting
-- Added `ROADMAP.md` outlining v5.0 and beyond
-
----
-
-## [4.0.0] — 2025-04-10
-
-### 🔁 Modular AI Bot Core
-
-- Refactored structure into `/src/`, `/strategy/`, `/ai/`
-- Enabled optional OpenAI integration for strategy advising
-- Added `.env` support and Synology NAS compatibility
-- Docker and local run support
-- Included Pushover notification integration
-
----
-
-## [3.0.2] — Legacy Version
-
-- Stable trading grid with basic config
-- First draft of strategy modules
-- Lacked AI features or structured logging
+- DRY_RUN now respected across all modules
+- Improved stability for Synology deployment
