@@ -3,9 +3,6 @@
 **Version 3.1.0-dev**  
 Open-source automated trading bot for Kraken (XRP/USD), running 24/7 on local machines, NAS, or Docker containers.
 
-> A small project born to bring forgotten crypto back to life —  
-> Let the little ones profit from capitalism... using the leftovers of capitalism 💸
-
 ---
 
 ## ⚙️ Features
