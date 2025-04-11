@@ -1,26 +1,26 @@
-FROM python:3.9-slim
+# Étape 1 : Base Python moderne & légère
+FROM python:3.11-slim
 
+# Étape 2 : Répertoire de travail
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
+# Étape 3 : Dépendances Python
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create necessary directories
-RUN mkdir -p data logs backups
+# Étape 4 : Copier le code source
+COPY src/ ./src/
+COPY config/ ./config/
+COPY scripts/ ./scripts/
+COPY config.json .  # Si encore utilisé pour fallback manuel
 
-# Copy source code
-COPY src/ src/
-COPY config/ config/
-COPY scripts/ scripts/
-
-# Set environment variables
+# Étape 5 : Configuration runtime
 ENV PYTHONUNBUFFERED=1
 
-# Set entrypoint
-CMD ["python3", "src/main.py"]
+# Étape 6 : Point d’entrée
+CMD ["python", "src/main.py"]
 
-# Label with version
-LABEL version="3.0.2"
-LABEL description="XRP Grid Trading Bot with advanced analysis modules and Pushover notifications"
+# Étape 7 : Labeling (meta-infos)
+LABEL version="3.1.0-dev"
+LABEL description="XRP Grid Trading Bot refactoré pour .env + Docker + Synology"
 LABEL maintainer="Karibusan"

@@ -1,90 +1,55 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-"""
-Main entry point for XRP Trading Bot
-Version: 3.0.2
-"""
-
-import os
-import sys
-import json
-import logging
 import time
-from datetime import datetime
+from config_loader import load_config
+from utils.logger import setup_logger
+from market.kraken_client import KrakenClient
+from strategy import strategy_selector
+from executor.trade_executor import TradeExecutor
+from notifier.pushover import send_notification
 
-# Add src directory to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Charger la configuration fusionnée (.env + config.json)
+config = load_config()
 
-from src.enhanced_trading_system import EnhancedTradingSystem
-from src.notification_manager import NotificationManager
-from src.error_handler import ErrorHandler
-from src.api_client import APIClient
-from src.config_manager import ConfigManager
+# Setup du logger
+logger = setup_logger(log_level=config.get("log_level", "INFO"))
 
-def setup_logging():
-    """Setup logging configuration"""
-    log_dir = "logs"
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-        
-    log_file = os.path.join(log_dir, f"xrp_bot_{datetime.now().strftime('%Y%m%d')}.log")
-    
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
-    
-    return logging.getLogger("xrp_bot")
+# Dry-run info
+if config.get("dry_run"):
+    logger.warning("⚠️ Le bot est en mode simulation (dry-run) : aucun trade réel ne sera effectué.")
 
-def main():
-    """Main entry point for the XRP Trading Bot"""
-    logger = setup_logging()
-    logger.info("Starting XRP Trading Bot v3.0.2")
-    
+# Initialisation du client Kraken et de l'exécuteur de trade
+kraken = KrakenClient(config["api_key"], config["api_secret"])
+executor = TradeExecutor(kraken, dry_run=config["dry_run"])
+
+# Symboles et paramètres de trading
+symbol = config["symbol"]
+base_currency = config["base_currency"]
+quote_currency = config["quote_currency"]
+trade_amount = config["trade_amount"]
+
+# Boucle principale
+def main_loop():
     try:
-        # Initialize configuration manager
-        config_manager = ConfigManager("config/config.json")
-        
-        # Initialize error handler
-        error_handler = ErrorHandler("config/error_handler_config.json")
-        
-        # Initialize notification manager
-        notification_manager = NotificationManager("config/notification_config.json", error_handler)
-        
-        # Send startup notification
-        notification_manager.send_status_notification(
-            "XRP Trading Bot Started",
-            "Version 3.0.2 initialized successfully"
-        )
-        
-        # Initialize API client
-        api_client = APIClient("config/api_client_config.json", error_handler)
-        
-        # Initialize trading system
-        trading_system = EnhancedTradingSystem(
-            config_manager=config_manager,
-            api_client=api_client,
-            notification_manager=notification_manager,
-            error_handler=error_handler
-        )
-        
-        # Start trading
-        trading_system.start()
-        
+        logger.info("⏳ Récupération des données de marché...")
+        price_data = kraken.get_ohlc_data(symbol)
+        logger.info("📈 Analyse stratégique en cours...")
+        signals = strategy_selector.analyze(price_data, config)
+
+        if signals.get("buy"):
+            logger.info("💰 Signal d'achat détecté.")
+            executor.buy(symbol, trade_amount)
+            send_notification("Signal d'achat exécuté.")
+
+        if signals.get("sell"):
+            logger.info("🔻 Signal de vente détecté.")
+            executor.sell(symbol, trade_amount)
+            send_notification("Signal de vente exécuté.")
+
     except Exception as e:
-        logger.error(f"Fatal error: {str(e)}")
-        if 'notification_manager' in locals():
-            notification_manager.send_error_notification(
-                "Fatal Error",
-                f"Bot crashed with error: {str(e)}",
-                "critical"
-            )
-        sys.exit(1)
+        logger.error(f"💥 Erreur dans la boucle principale : {e}")
+        send_notification(f"Erreur : {e}")
 
 if __name__ == "__main__":
-    main()
+    logger.info("🚀 Démarrage du XRP Grid Trading Bot")
+    while True:
+        main_loop()
+        time.sleep(60)  # Attente de 1 minute avant la prochaine itération
