@@ -64,3 +64,24 @@ Example:
 If present, this will override `.env` values **unless explicitly disabled**.
 
 ---
+---
+
+## 🧪 Experimental Config Files
+
+The following files are included for future modules that are still in development:
+
+| Config File                                      | Purpose                                  | Status             |
+|--------------------------------------------------|------------------------------------------|--------------------|
+| `api_client_config.json.example`                | Used to define API endpoints and keys    | Planned for v6     |
+| `capital_migration_config.json.example`         | Strategy module for capital shifting     | Placeholder        |
+| `error_handler_config.json.example`             | Error management configuration           | Not yet integrated |
+| `notification_config.json.example`              | Notification config (may duplicate .env) | To unify           |
+| `signal_collapse_config.json.example`           | Collapse detection module config         | Not yet wired      |
+| `strategic_bifurcation_config.json.example`     | Strategy decision-making module          | Placeholder        |
+| `survivability_config.json.example`             | Module for survivability logic           | Planned            |
+| `technological_convergence_config.json.example` | Convergence analysis module config       | Placeholder        |
+
+> These files are safe to leave in the `config/` folder.  
+> They are **not yet used in production**, but may be activated in v5+ depending on development progress.
+
+---
