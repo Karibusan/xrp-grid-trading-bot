@@ -58,3 +58,21 @@ Crypto builder • Ethical hacker • Post-capitalist dreamer
 MIT License — Use, fork, improve.  
 If this helps you, pay it forward. If it inspires you, reach out.  
 Together, we code beyond borders.
+
+---
+
+### 🧪 Testing Status (Read Before Use)
+
+> ⚠️ **Disclaimer:**
+>
+> This bot has not been heavily tested yet.  
+> We are in the process of building its core architecture, and many features are still experimental.
+
+- ✅ It works on small amounts and behaves as expected under most conditions  
+- 🚧 However, bugs or unexpected behaviors may still occur  
+- 🧪 Full test coverage will follow the release of version 5.0
+
+**We welcome early users and testers.**  
+If you run into issues, please open an [issue](https://github.com/Karibusan/xrp-grid-trading-bot/issues) or share anonymized logs to help us improve.
+
+> Together, we debug. Together, we grow.
