@@ -1,148 +1,124 @@
-# XRP Grid Trading Bot v3.0.2
+# 🌀 XRP Grid Trading Bot
 
-![Version](https://img.shields.io/badge/version-3.0.2-blue)
-![Python](https://img.shields.io/badge/python-3.9-green)
-![License](https://img.shields.io/badge/license-MIT-orange)
+**Version 3.1.0-dev**  
+Open-source automated trading bot for Kraken (XRP/USD), running 24/7 on local machines, NAS, or Docker containers.
 
-An automated trading bot for XRP grid trading on Kraken, with advanced analysis modules and a Pushover notification system.
+> A small project born to bring forgotten crypto back to life —  
+> Let the little ones profit from capitalism... using the leftovers of capitalism 💸
 
-## New Features in v3.0.2
+---
 
-- **Fixed module integration**: All specialized modules from v2.0 now properly integrated
-- **Enhanced error handling**: Improved error detection and recovery in all modules
-- **Improved Pushover notifications**: Added dedicated notification levels with proper configuration
-- **Updated deployment scripts**: Better support for Synology NAS deployment
-- **Manual deployment instructions**: Added special instructions for macOS users
-- **English documentation**: All documentation translated to English
+## ⚙️ Features
 
-## Features from v3.0.0
+- 🔁 Automated buy/sell trading on Kraken using a grid strategy
+- 🧠 Modular and extensible strategy logic (`strategy/`)
+- 📲 Pushover notifications (buy/sell/errors)
+- 🐳 Docker-ready with `.env` support
+- 🔐 No cloud, no tracking — fully local
 
-- **Pushover notification system**: Replacement of Telegram with Pushover featuring different notification levels (trades, daily reports, efficiency, errors, debugging)
-- **Robust error handling**: Centralized system for error detection, logging, and recovery
-- **Optimized API client**: Rate limiting and caching to reduce API calls
-- **Advanced configuration management**: Configuration validation via JSON schemas
-- **Unit tests** for all main components
-- **Comprehensive documentation**
+---
 
-## Prerequisites
+## 📁 Project structure
 
-- Python 3.9 or higher
-- Kraken account with API keys
-- Pushover account with user key and application token
-- Docker and Docker Compose (optional, for containerized deployment)
-
-## Quick Installation
-
-### Standard Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/Karibusan/xrp-grid-trading-bot.git
-cd xrp-grid-trading-bot
-
-# Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure the bot
-cp config/config.json.example config/config.json
-cp config/notification_config.json.example config/notification_config.json
-cp config/error_handler_config.json.example config/error_handler_config.json
-cp config/api_client_config.json.example config/api_client_config.json
-cp config/signal_collapse_config.json.example config/signal_collapse_config.json
-cp config/capital_migration_config.json.example config/capital_migration_config.json
-cp config/strategic_bifurcation_config.json.example config/strategic_bifurcation_config.json
-cp config/technological_convergence_config.json.example config/technological_convergence_config.json
-cp config/survivability_config.json.example config/survivability_config.json
-
-# Modify configuration files to add your API keys
-
-# Launch the bot
-python src/main.py
+```
+├── src/
+│   ├── main.py                 → entry point
+│   ├── config_loader.py       → config merge from .env + JSON
+│   └── strategy/              → trading logic (plugins)
+├── config/
+├── logs/
+├── scripts/
+├── requirements.txt
+├── .env.example
+├── docker-compose.yml
+└── Dockerfile
 ```
 
-### Docker Installation
+---
+
+## 🚀 Deployment
+
+### 1. Clone the repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/Karibusan/xrp-grid-trading-bot.git
 cd xrp-grid-trading-bot
-
-# Configure the bot (as above)
-
-# Launch with Docker Compose
-docker-compose up -d
 ```
 
-## Configuration
+### 2. Configuration
 
-The bot uses multiple JSON configuration files:
+Copy the example environment file:
 
-- `config/config.json`: Main configuration
-- `config/notification_config.json`: Pushover notification configuration
-- `config/error_handler_config.json`: Error handling configuration
-- `config/api_client_config.json`: API client configuration
-- `config/signal_collapse_config.json`: Signal collapse module configuration
-- `config/capital_migration_config.json`: Capital migration module configuration
-- `config/strategic_bifurcation_config.json`: Strategic bifurcation module configuration
-- `config/technological_convergence_config.json`: Technological convergence module configuration
-- `config/survivability_config.json`: Survivability module configuration
+```bash
+cp .env.example .env
+```
 
-See the [advanced configuration documentation](docs/advanced_configuration.md) for more details.
+Then fill in your Kraken API keys and Pushover credentials.
 
-## Specialized Modules
+### 3. Run with Docker
 
-The bot integrates several advanced analysis modules:
+```bash
+docker-compose up --build -d
+```
 
-- **Signal Collapse**: Detects potential market collapses
-- **Capital Migration**: Tracks capital movements between markets
-- **Strategic Bifurcation**: Analyzes strategic bifurcations in the market
-- **Technological Convergence**: Evaluates the impact of technological convergences
-- **Survivability**: Analyzes the system's ability to survive in extreme market conditions
+### 4. Logs
 
-## Documentation
+```bash
+docker logs -f xrp-grid-bot
+```
 
-- [Detailed installation guide](docs/installation.md)
-- [Advanced configuration](docs/advanced_configuration.md)
-- [Notification system](docs/notification_system.md)
-- [Implementation guide](IMPLEMENTATION_GUIDE.md)
-- [Changelog](CHANGELOG.md)
+---
 
-## Utility Scripts
+## ⚙️ .env Variables
 
-- `scripts/backup.sh`: Backup configurations and data
-- `scripts/deploy_to_synology.sh`: Deployment to Synology NAS
-- `scripts/deploy_to_synology_with_password.sh`: Password-based deployment to Synology NAS
-- `scripts/test_notifications.py`: Test Pushover notifications
+| Variable | Description |
+|----------|-------------|
+| `API_KEY` | Kraken API key |
+| `API_SECRET` | Kraken API secret |
+| `PUSHOVER_USER_KEY` | Pushover user key |
+| `PUSHOVER_API_TOKEN` | Pushover API token |
+| `SYMBOL` | e.g., `XXRPZUSD` |
+| `BASE_CURRENCY` | e.g., `XRP` |
+| `QUOTE_CURRENCY` | e.g., `USD` |
+| `TRADE_AMOUNT` | Amount per trade |
+| `DRY_RUN` | `true` or `false` |
+| `LOG_LEVEL` | `INFO`, `DEBUG`, `ERROR` |
+| `PUID/PGID` | (optional) for Synology Docker permissions |
+| `TZ` | e.g., `Europe/London` |
 
-## Troubleshooting
+---
 
-If you encounter issues:
+## 🧪 Simulation mode (dry-run)
 
-1. Check the logs in the `logs/` directory
-2. Consult the error file in `data/error_log.json`
-3. Ensure your API keys are correct and have the necessary permissions
-4. Verify your Pushover configuration
-5. For Synology deployment issues, refer to the manual deployment instructions
+To test the bot without making real trades:
 
-## Contributing
+```env
+DRY_RUN=true
+```
 
-Contributions are welcome! Please follow these steps:
+---
 
-1. Fork the repository
-2. Create a branch for your feature
-3. Add your changes
-4. Submit a pull request
+## 🔭 Upcoming features
 
-## License
+- 📊 Web dashboard (Flask? React?)
+- 🧬 Historical market data (via `data/`)
+- 💾 Auto-backup of config (via `backups/`)
+- 🧠 Machine-learning strategies (boss stuff 😅)
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+---
 
-## Acknowledgments
+## 🤝 Contributing
 
-- Kraken for their API
-- Pushover for their notification service
-- All contributors and users of the bot
+- Forks and pull requests welcome!
+- Clean and commented code under MIT license
+- If you’re a solo dev with sleeping crypto: this bot is for you.
+
+---
+
+## 👤 Author
+
+**Karibusan**  
+Crypto builder / ethical hacker / post-capitalist dreamer  
+MIT License — Do whatever you want with it, as long as it helps someone.
+
+---
