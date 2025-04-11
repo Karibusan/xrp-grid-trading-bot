@@ -122,3 +122,9 @@ Crypto builder / ethical hacker / post-capitalist dreamer
 MIT License — Do whatever you want with it, as long as it helps someone.
 
 ---
+
+## 🕯️ Tribute
+
+This bot is dedicated to **Blaise le Balèze**,  
+a legendary Commodore 64 who powered a generation of dreams.  
+1980s silicon. Eternal soul.
