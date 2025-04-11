@@ -49,6 +49,8 @@ xrp-grid-trading-bot/
 
 ---
 
+🙌 [Meet the contributors](./CONTRIBUTORS.md)
+
 ## 👤 Author
 
 **Yan Urquiza**  
