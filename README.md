@@ -1,5 +1,11 @@
 # 🌀 XRP Grid Trading Bot
 
+> ⚠️ **Disclaimer:**  
+> This project is for educational and experimental purposes only.  
+> It does **not** constitute financial advice, investment recommendations, or trading guarantees.  
+> Use at your own risk.
+
+
 **Version 4.0-dev**  
 Open-source automated trading bot for Kraken (XRP/USD), now powered by LLM-based strategy suggestions. Runs 24/7 on local machines, NAS, or Docker containers.
 
