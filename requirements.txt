@@ -1,16 +1,3 @@
-# Dépendances essentielles pour le fonctionnement du bot XRP Grid
-
-krakenex>=2.1.0              # Librairie Kraken API officielle
-python-dotenv>=1.0.0         # Pour lire les variables d'environnement depuis un .env
-requests>=2.25.1             # Pour les requêtes HTTP classiques
-schedule>=1.1.0              # Pour planifier les cycles d'exécution du bot
-psutil>=5.9.5                # Pour surveiller l'état système (optionnel mais utile sur un NAS)
-
-# ❌ Ces librairies ont été retirées pour la version PROD allégée :
-# numpy
-# pandas
-# scikit-learn
-# matplotlib
-# jsonschema
-# pytest
-# pytest-mock
+python-dotenv>=1.0.0
+requests>=2.25.1
+openai>=1.0.0
