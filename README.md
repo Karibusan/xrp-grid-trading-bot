@@ -9,7 +9,7 @@
 Open-source automated trading bot for Kraken (XRP/USD), now powered by LLM-based strategy suggestions. Runs 24/7 on local machines, NAS, or Docker containers.
 
 > A project born to give a second life to forgotten crypto —  
-> Helping small holders leverage capital… without feeding the beast.
+> Helping small holders leverage capital.
 
 ---
 
@@ -53,12 +53,8 @@ xrp-grid-trading-bot/
 
 **Yan Urquiza**  
 📧 Email: [ulcan19@pm.me](mailto:ulcan19@pm.me)  
-Crypto builder • Ethical hacker • Post-capitalist dreamer
 
 MIT License — Use, fork, improve.  
-If this helps you, pay it forward. If it inspires you, reach out.  
-Together, we code beyond borders.
-
 ---
 
 ### 🧪 Testing Status (Read Before Use)
