@@ -1,66 +1,58 @@
-# Changelog for XRP Trading Bot
+# 📜 Changelog
 
-## Version 3.0.2 (April 9, 2025)
+## [4.2.0] — 2025-04-11
 
-### Improvements
-- Fixed integration of all specialized modules from v2.0
-- Enhanced error handling in all modules
-- Improved Pushover notification system with dedicated notification levels
-- Updated deployment scripts for Synology NAS
-- Corrected documentation and translated all files to English
+### 🧠 Log Intelligence & AI Preparation
 
-### Bug Fixes
-- Fixed module import errors that prevented trading in v3.0.0
-- Resolved directory creation issues in Synology deployment
-- Fixed notification system KeyError for status level notifications
+- Added `log_summarizer.py` to auto-generate daily JSON summaries of trading logs
+- Created `PROMPT_GUIDE.md` to define acceptable AI prompt types
+- Introduced `log_formatter.py` for structured, JSON-based logging
+- Added `validate_env.py` to check required environment variables on startup
+- Established `/logs/summary/` for AI-ready memory architecture
 
-## Version 3.0.0 (April 7, 2025)
+> This version lays the foundation for autonomous, intelligent bot behavior in v5.0.  
+> Structured logs = memory. Prompts = communication. AI = augmentation.
 
-### New Features
-- Replaced Telegram with Pushover for notifications
-- Added different notification levels (trades, daily reports, efficiency, errors, debugging)
-- Implemented centralized error handling system
-- Added optimized API client with rate limiting and caching
-- Implemented configuration manager with JSON schema validation
-- Added unit tests for all main components
-- Enhanced security for API keys
+---
 
-### Improvements
-- Complete refactoring of the trading system for better modularity
-- Performance optimization and reduction of API calls
-- Improved logging for better debugging
-- Complete documentation in English
-- Better integration of specialized modules
-- Added automatic recovery mechanisms after errors
+## [4.1.0] — 2025-04-11
 
-### Bug Fixes
-- Fixed issue preventing trades execution in version 2.0
-- Resolved module initialization problems
-- Fixed precision errors in price calculations
-- Resolved connection issues with Kraken API
-- Fixed memory leaks during extended operation
+### 🚧 Consolidation & Core Reinforcement
 
-## Version 2.0.0 (February 15, 2025)
+- Added `requirements.txt` with minimal clean dependencies
+- Added `.gitignore` to exclude logs, compiled files, env
+- Added `setup.py` for optional future packaging
 
-### New Features
-- Added specialized modules (signal collapse, capital migration, strategic bifurcation, technological convergence, survivability)
-- Implemented enhanced trading system
-- Added Telegram notifications
-- Support for Docker deployment
+### 🧪 Testing & CI
 
-### Improvements
-- Code refactoring for better organization
-- Improved grid trading strategy
-- Added configurable parameters for order size
+- Introduced `tests/` directory with first unit test (`config_loader`)
+- Added GitHub Actions (`ci.yml`) to run tests automatically on push/PR
+- Modularized testing structure for future extensions
 
-### Bug Fixes
-- Various minor bug fixes
+### 📚 Documentation Expansion
 
-## Version 1.0.0 (December 10, 2024)
+- `README.md` updated with legal disclaimer and clear doc links
+- `README_AI.md` now includes a dedicated AI usage disclaimer
+- Added `CONTRIBUTING.md` for external collaborators
+- Added `SECURITY.md` for vulnerability reporting
+- Added `ROADMAP.md` outlining v5.0 and beyond
 
-### Initial Features
-- Basic implementation of grid trading bot for XRP/GBP
-- Kraken API connection
-- Basic configuration via JSON file
-- Activity logging
-- Simple grid trading strategy
+---
+
+## [4.0.0] — 2025-04-10
+
+### 🔁 Modular AI Bot Core
+
+- Refactored structure into `/src/`, `/strategy/`, `/ai/`
+- Enabled optional OpenAI integration for strategy advising
+- Added `.env` support and Synology NAS compatibility
+- Docker and local run support
+- Included Pushover notification integration
+
+---
+
+## [3.0.2] — Legacy Version
+
+- Stable trading grid with basic config
+- First draft of strategy modules
+- Lacked AI features or structured logging

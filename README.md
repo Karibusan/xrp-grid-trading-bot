@@ -5,7 +5,7 @@
 > It does **not** constitute financial advice, investment recommendations, or trading guarantees.  
 > Use at your own risk.
 
-**Version 4.0.0**  
+**Version 4.2.0**  
 Open-source automated trading bot for Kraken (XRP/USD), now powered by LLM-based strategy suggestions. Runs 24/7 on local machines, NAS, or Docker containers.
 
 > A project born to give a second life to forgotten crypto —  
@@ -48,8 +48,6 @@ xrp-grid-trading-bot/
 - [🔐 Security Policy](docs/SECURITY.md)
 
 ---
-
-🙌 [Meet the contributors](./CONTRIBUTORS.md)
 
 ## 👤 Author
 
