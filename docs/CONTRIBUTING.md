@@ -1,5 +1,7 @@
 # 🤝 Contributing to XRP Grid Trading Bot
 
+> 🚫 Please do not submit features or documentation that suggest this bot guarantees profits or acts as a financial advisor.
+
 Thank you for considering a contribution to this open-source trading bot.  
 This project exists to empower small holders and promote ethical, modular crypto automation.
 
