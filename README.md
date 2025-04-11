@@ -1,39 +1,43 @@
 # 🌀 XRP Grid Trading Bot
 
-**Version 3.1.0-dev**  
-Open-source automated trading bot for Kraken (XRP/USD), running 24/7 on local machines, NAS, or Docker containers.
+**Version 4.0-dev**  
+Open-source automated trading bot for Kraken (XRP/USD), now powered by LLM-based strategy suggestions. Runs 24/7 on local machines, NAS, or Docker containers.
+
+> A project born to give a second life to forgotten crypto —  
+> Helping small holders leverage capital… without feeding the beast.
 
 ---
 
 ## ⚙️ Features
 
 - 🔁 Automated buy/sell trading on Kraken using a grid strategy
-- 🧠 Modular and extensible strategy logic (`strategy/`)
+- 🤖 Optional AI advisor (OpenAI, Mistral, local LLM via Ollama)
+- 🧠 Modular strategy system with plugin architecture
 - 📲 Pushover notifications (buy/sell/errors)
 - 🐳 Docker-ready with `.env` support
-- 🔐 No cloud, no tracking — fully local
+- 🔐 Full local execution possible — no cloud dependency
 
 ---
 
 ## 📁 Project structure
 
 ```
+xrp-grid-trading-bot/
 ├── src/
-│   ├── main.py                 → entry point
-│   ├── config_loader.py       → config merge from .env + JSON
-│   └── strategy/              → trading logic (plugins)
-├── config/
-├── logs/
-├── scripts/
-├── requirements.txt
-├── .env.example
-├── docker-compose.yml
-└── Dockerfile
+│   ├── main.py
+│   ├── config_loader.py
+│   ├── ai/
+│   │   ├── llm_client.py
+│   │   └── providers/
+│   │       └── openai.py
+│   └── strategy/
+│       ├── ai_strategy_advisor.py
+│       └── ... (other modules)
 ```
 
 ---
 
-## 🚀 Deployment
+## 🚀 Quickstart
 
 ### 1. Clone the repository
 
@@ -44,13 +48,11 @@ cd xrp-grid-trading-bot
 
 ### 2. Configuration
 
-Copy the example environment file:
+Copy and customize the `.env` file:
 
 ```bash
 cp .env.example .env
 ```
-
-Then fill in your Kraken API keys and Pushover credentials.
 
 ### 3. Run with Docker
 
@@ -58,70 +60,34 @@ Then fill in your Kraken API keys and Pushover credentials.
 docker-compose up --build -d
 ```
 
-### 4. Logs
-
-```bash
-docker logs -f xrp-grid-bot
-```
-
 ---
 
-## ⚙️ .env Variables
-
-| Variable | Description |
-|----------|-------------|
-| `API_KEY` | Kraken API key |
-| `API_SECRET` | Kraken API secret |
-| `PUSHOVER_USER_KEY` | Pushover user key |
-| `PUSHOVER_API_TOKEN` | Pushover API token |
-| `SYMBOL` | e.g., `XXRPZUSD` |
-| `BASE_CURRENCY` | e.g., `XRP` |
-| `QUOTE_CURRENCY` | e.g., `USD` |
-| `TRADE_AMOUNT` | Amount per trade |
-| `DRY_RUN` | `true` or `false` |
-| `LOG_LEVEL` | `INFO`, `DEBUG`, `ERROR` |
-| `PUID/PGID` | (optional) for Synology Docker permissions |
-| `TZ` | e.g., `Europe/London` |
-
----
-
-## 🧪 Simulation mode (dry-run)
-
-To test the bot without making real trades:
+## 🧪 AI Integration (optional)
 
 ```env
-DRY_RUN=true
+LLM_PROVIDER=openai        # or local / mistral / huggingface
+LLM_API_KEY=sk-...         # if required
+LLM_MODEL=gpt-4
+LLM_LOCAL_URL=http://localhost:11434  # for Ollama or local deployment
 ```
 
----
-
-## 🔭 Upcoming features
-
-- 📊 Web dashboard (Flask? React?)
-- 🧬 Historical market data (via `data/`)
-- 💾 Auto-backup of config (via `backups/`)
-- 🧠 Machine-learning strategies (boss stuff 😅)
+You can call AI strategy suggestions from logs using `ai_strategy_advisor.evaluate_market(log_excerpt)`.
 
 ---
 
 ## 🤝 Contributing
 
-- Forks and pull requests welcome!
-- Clean and commented code under MIT license
-- If you’re a solo dev with sleeping crypto: this bot is for you.
+Forks welcome. Issues encouraged. PRs blessed.  
+If this project helps you, pay it forward — and consider sharing how you used it.
 
 ---
 
 ## 👤 Author
 
-**Karibusan**  
-Crypto builder / ethical hacker / post-capitalist dreamer  
-MIT License — Do whatever you want with it, as long as it helps someone.
+**Yan Urquiza**  
+📧 Email: [ulcan19@pm.me](mailto:ulcan19@pm.me)  
+Crypto builder • Ethical hacker • Post-capitalist dreamer
 
----
-
-## 🕯️ Tribute
-
-This bot is dedicated to **Blaise le Balèze**,  
-a legendary Commodore 64 who powered a generation of dreams.  
-1980s silicon. Eternal soul.
+MIT License — Use, fork, improve.  
+If this helps you, pay it forward. If it inspires you, reach out.  
+Together, we code beyond borders.
